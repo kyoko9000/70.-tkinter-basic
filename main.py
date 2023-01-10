@@ -1,5 +1,6 @@
+# ****************tkinter GUI **********************************
 from tkinter import Tk
-from tkinter.ttk import Button, Label
+from tkinter.ttk import Button, Label, Style
 
 
 class Window(Tk):
@@ -8,19 +9,22 @@ class Window(Tk):
         self.wm_title("form")
         self.geometry("400x300")
 
-        # create button, link it to clickExitButton()
-        exit_button = Button(self, text="Exit", command=self.recive)
-        # place button at (0,0)
-        exit_button.place(x=50, y=100)
+        s = Style()
+        s.configure('2.TButton', font=('arial', 25))
+        exit_button = Button(self,
+                             text="change text",
+                             style="2.TButton",
+                             command=self.receive)
+        exit_button.place(x=50, y=200, width=230, height=50)
+
         # show a label
         self.label = Label(self,
-                      text='This is a label',
-                      font=('arial', 30, 'bold'))
-        self.label.place(x=50, y=10)
+                           text='This is a label',
+                           font=('arial', 30, 'bold'))
+        self.label.place(x=50, y=50)
 
-    def recive(self):
-        self.label.config(text="hi")
-        # print("exit")
+    def receive(self):
+        self.label.configure(text="hello")
         # self.destroy()
 
 
