@@ -10,8 +10,8 @@ class Window(Tk):
         self.wm_title("form")
         self.geometry("400x300")
 
-        # create button, link it to clickExitButton()
-        exit_button = Button(self, text="Exit", command=self.recive)
+        # create button, link it to receive()
+        exit_button = Button(self, text="Exit", command=self.receive)
         # place button at (0,0)
         exit_button.place(x=50, y=250)
         # show a label
@@ -20,11 +20,12 @@ class Window(Tk):
                       font=('arial', 30, 'bold'))
         self.label.place(x=50, y=10)
 
-    def recive(self):
-        zoom = 2
+    def receive(self):
         img = Image.open("1.jpg")
-        pixels_x, pixels_y = img.size
-        img = img.resize((round(pixels_x/zoom), round(pixels_y/zoom)))
+        # zoom = 2
+        # pixels_x, pixels_y = img.size
+        # img = img.resize((round(pixels_x/zoom), round(pixels_y/zoom)))
+        img = img.resize((300, 200))
         photo = ImageTk.PhotoImage(img)
         self.label.configure(image=photo)
         self.label.image = photo
